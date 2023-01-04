@@ -1,0 +1,115 @@
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x2e569a2c927ee6a21c0b40e171ac9127e82b19089a6565fd495562fca159ae76
+   > Blocks: 2            Seconds: 17
+   > contract address:    0x58A91157a6fC6BbFCAcf35e269540C4CB3c63D21
+   > block number:        10257272
+   > block timestamp:     1646206831
+   > account:             0x824B92D62a838aaEC0a4634Bcc5E1150618AdC39
+   > balance:             1.914159344848879937
+   > gas used:            245600 (0x3bf60)
+   > gas price:           2.500000011 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0006140000027016 ETH
+
+   Pausing for 2 confirmations...
+
+   -------------------------------
+   > confirmation number: 1 (block: 10257273)
+   > confirmation number: 2 (block: 10257274)
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.0006140000027016 ETH
+
+
+2_OpenMint_migration.js
+=======================
+
+   Deploying 'OpenMint'
+   --------------------
+   > transaction hash:    0xc03371d27a9ec8e02c97b08a644467693b617ced2efb848f04e2b201e4533117
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x8E34dfC41DE6A1F482a31F0982F6C3a54B170c62
+   > block number:        10257276
+   > block timestamp:     1646206891
+   > account:             0x824B92D62a838aaEC0a4634Bcc5E1150618AdC39
+   > balance:             1.907703279820519164
+   > gas used:            2536513 (0x26b441)
+   > gas price:           2.500000011 gwei
+   > value sent:          0 ETH
+   > total cost:          0.006341282527901643 ETH
+
+   Pausing for 2 confirmations...
+
+   -------------------------------
+   > confirmation number: 1 (block: 10257277)
+   > confirmation number: 2 (block: 10257278)
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.006341282527901643 ETH
+
+
+3_PaymentGateway_migration.js
+=============================
+
+   Deploying 'PaymentGateway'
+   --------------------------
+   > transaction hash:    0x925eeef229f9b8d88411d6460ee5430cd309abd3d5b8df28a92ce9ac02078a47
+   > Blocks: 1            Seconds: 9
+   > contract address:    0xb51660c84306059ca3FB58f49a99883BAa15443a
+   > block number:        10257280
+   > block timestamp:     1646206952
+   > account:             0x824B92D62a838aaEC0a4634Bcc5E1150618AdC39
+   > balance:             1.904938007308351965
+   > gas used:            1077296 (0x107030)
+   > gas price:           2.500000011 gwei
+   > value sent:          0 ETH
+   > total cost:          0.002693240011850256 ETH
+
+   Pausing for 2 confirmations...
+
+   -------------------------------
+   > confirmation number: 1 (block: 10257281)
+   > confirmation number: 2 (block: 10257282)
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.002693240011850256 ETH
+
+
+4_OpenMintMarketplace_migration.js
+==================================
+
+   Deploying 'OpenMintMarketplace'
+   -------------------------------
+   > transaction hash:    0x64f120be7d7e144248bb855b0b78be701e2ed1bc2f251a25c8a34041dca7021a
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x3ae1bd06f6aE2495d470Dc058c542A9364de0881
+   > block number:        10257284
+   > block timestamp:     1646207012
+   > account:             0x824B92D62a838aaEC0a4634Bcc5E1150618AdC39
+   > balance:             1.898959327284437245
+   > gas used:            2362659 (0x240d23)
+   > gas price:           2.50000001 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00590664752362659 ETH
+
+   Pausing for 2 confirmations...
+
+   -------------------------------
+   > confirmation number: 1 (block: 10257285)
+   > confirmation number: 2 (block: 10257286)
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.00590664752362659 ETH
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.015555170066080089 ETH

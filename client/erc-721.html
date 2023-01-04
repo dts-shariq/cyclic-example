@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/stylee.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/erc-721.css">
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="text/javascript" href="assets/js/buffer.js>
+    <link rel="icon" type="image/png" href="assets/images-icons/OpenMintLogo.png">
+ 
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="./buffer.js"></script>
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+       <script src="https://unpkg.com/moralis-v1@1.11.0/dist/moralis.js"></script>
+
+    <script src="https://unpkg.com/ipfs-api/dist/index.min.js"></script>
+    <script src="https://kit.fontawesome.com/99c803f139.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="stylee.css">
+    <title>iLife NFT-Marketplace</title>
+    <!-- <title>OpenMint - Create, buy, and sell digital artwork backed by blockchain technology</title> -->
+  
+    <style>
+    
+.container {
+  margin-top: 5px;
+  padding-top: 5px;
+
+}
+
+.select-box {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.select-box .options-container {
+  /*background: #2f3640;*/
+  background: #3572fb;
+  color: #f5f6fa;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected {
+  background: #3572fb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #f5f6fa;
+  position: relative;
+
+  order: 0;
+}
+
+.selected::after {
+  content: "";
+  background: url("img/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 5px;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background: #054b9f;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .radio {
+  display: none;
+}
+
+  </style>
+</head>
+
+<body>
+  <my-header></my-header>
+
+  <div class="container">
+
+    <div id="ifWalletNotConnectedModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header center-content">
+            <h5 class="modal-title">Must Connect Wallet To Continue</h5>
+          </div>
+          <div class="modal-body center-content">
+            <button type="button" class="btn btn-secondary button-styling mr-2" id="goBackBtn">Go Back</button>
+            <button type="button" class="btn btn-primary button-styling" id="connectWalletModalBtn">Connect
+              Wallet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="fileSizeModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">File Size Too Large</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="fileSizeModalBody" class="modal-body text-danger">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary button-styling" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="make-single">
+      <header>
+        Create a single NFT
+      </header>
+
+      <div class='upload-form'>
+
+        <form>
+          <span class="upload-title">Upload file</span>
+
+
+
+
+
+          <div class="form-group file-upload">
+            <button id="clearFile" class="btn btn-light close" aria-label="Close"><span id="closeIcon1"
+                aria-hidden="true">&times;</span></button>
+            <label id="imageFileLabel">PNG, JPEG, GIF, WEBP, MP4 or MP3. (64 MB max) <br> <span class="label-info">If
+                file larger than 64 MB<br>add a link to download a high-res version below under <span
+                  class="saleProfit1" id="unlockableContentTooltip" data-toggle="tooltip" data-placement="top"
+                  title="This is content that only the owner of the artwork can see and transfers with ownership on OpenMint.">unlockable
+                  content</span>.<span> </label>
+            <img src="" id="nftImgEx" width="200px">
+            <video src="" id="nftVidEx" autoplay controls loop disablePictureInPicture
+              controlsList="nofullscreen nodownload" width="200px"></video>
+            <audio src="" id="nftAudEx" width="200px" autoplay controls controlsList="nodownload"></audio>
+            <input required id="nftImgFile" hidden
+              accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/webm,audio/mp3,audio/webm,audio/mpeg"
+              type="file" class="form-control-file">
+            <div class="upload-button-div">
+              <label id="uploadImage" class="button-styling" for="nftImgFile">Choose File</label>
+            </div>
+            <span id='nftSizeExceededText' class="text-danger"></span>
+          </div>
+
+
+
+
+
+
+          <div id="formToUploadCover">
+            <span class="upload-title">Upload cover</span>
+
+            <div class="form-group file-upload">
+              <button id="clearCover" class="btn btn-light close" aria-label="Close"><span id="closeIcon2"
+                  aria-hidden="true">&times;</span></button>
+              <label id="coverLabel">PNG, JPEG, GIF or WEBP. (3 MB max)<br> <span class="label-info">This is the image
+                  seen first.</span></label>
+              <img id="nftCoverEx" src="" width="200px">
+              <input id="nftCoverFile" hidden accept="image/png,image/jpeg,image/gif,image/webp" type="file"
+                class="form-control-file">
+              <div class="cover-upload-button-div">
+                <label id="uploadCover" class="button-styling" for="nftCoverFile">Choose File</label>
+              </div>
+              <span id='fileSizeExceededText' class="text-danger"></span>
+            </div>
+          </div>
+
+        
+
+
+          <div class="row">
+            <div class='col-lg-12'>
+
+              <div class="switch">
+                <div class="custom-control custom-switch">
+                  <span class="switch-title">For Sale On Market</span>
+                  <!-- <span class="switch-subtitle">This can always be changed later</span> -->
+                  <input type="checkbox" checked="checked" class="custom-control-input" id="onSaleSwitch">
+                  <label class="custom-control-label" for="onSaleSwitch"></label>
+                </div>
+              </div>
+
+              <div id="priceInputGroup">
+                <div class="input-group">
+                  <input id="salePriceInput" required name="Initial price of NFT"
+                    title="Price cannot have more than 18 digits before or 15 digits after the decimal" type="text"
+                    class="form-control input-styling" placeholder="Enter price in ILIFETOKEN - e.g. 1.69"
+                    aria-label="ether amount">
+                </div>
+
+                <div class="price-calculator price-info">
+                  <span>Service Fee Upon Sale <span>2%</span></span><br>
+                  <!-- <span>Your profit will be: <span id="saleProfit">0 ILIFETOKEN</span> <span id="usdProfit">$0.00</span></span> -->
+                  <span>Your profit will be: <span id="saleProfit">0 ILIFETOKEN</span> </span>
+                </div>
+              </div>
+
+              <div class="switch" id="unlockableContent">
+                <div class="custom-control custom-switch">
+                  <span class="switch-title">Unlockable Content</span>
+                  <span class="switch-subtitle">**This can only be set here**</span>
+                  <input type="checkbox" class="custom-control-input" id="unlockableSwitch">
+                  <label class="custom-control-label" for="unlockableSwitch"></label>
+                </div>
+              </div>
+
+              <div class="helper">
+                <div id="unlockableContentInputGroup">
+                  <div class="input-group">
+                    <input id="unlockableContentText" type="text" class="form-control input-styling"
+                      placeholder="Link to high-res download, code to redeem etc."
+                      aria-label="file, code, or key to unlock content">
+                  </div>
+                  <span class='sub-text'>This information will be off-chain but CANNOT be changed</span>
+                </div>
+              </div>
+
+              <div class="helper">
+                <div class="form-group" id="royalties">
+                  <label class="slider-title">Royalties</label>
+                  <span id="royaltyAmount">10%</span>
+                  <input type="range" class="form-control-range" min="1" max="50" value="10" id="royaltySlider">
+                </div>
+                <span class='sub-text'>This information will be put on-chain and CANNOT be changed</span>
+              </div>
+
+              <div class="helper">
+                <div class="input-group" id="namingInputGroup">
+                  <span class="input-title">Title</span>
+                  <input required id="title" maxlength="88" type="text"
+                    class="form-control input-styling naming-styling" placeholder='e.g. "The Finisher Car"'
+                    aria-label="title of NFT">
+                </div>
+                <span class='sub-text'>This information will be put on-chain and CANNOT be changed</span>
+              </div>
+
+              <div class="helper">
+                <div class="input-group" id="description">
+                  <span class="input-title">Description</span>
+                  <textarea id="descriptionInput" type="text" class="form-control input-styling naming-styling"
+                    placeholder='e.g. "A car of the gods, a golden god!"' aria-label="description of NFT"></textarea>
+                </div>
+                <span class='sub-text'>This information will be put on-chain and CANNOT be changed</span>
+              </div>
+               
+           
+    
+
+              <div class="helper">
+                <div class="input-group" id="description">
+                  <span class="input-title">Category</span>
+                  <div class="container">
+                           
+                    <div class="select-box">
+                      <div class="options-container">
+                        <div class="option">
+                          <input
+                            type="radio"
+                            class="radio"
+                            id="Medical"
+                            name="category"
+                          />
+                          <label for="Medical">Medical</label>
+                        </div>
+              
+                        <div class="option">
+                          <input type="radio" class="radio" id="HEALTHCARE" name="category" />
+                          <label for="HEALTHCARE">Health Care</label>
+                        </div>
+              
+                        <div class="option">
+                          <input type="radio" class="radio" id="Recycleenergy" name="category" />
+                          <label for="Recycleenergy">Recycle Energy</label>
+                          
+                        </div>
+              
+                        <div class="option">
+                          <input
+                            type="radio"
+                            class="radio"
+                            id="RealEstate"
+                            name="category"
+                          />
+                          <label for="RealEstate">Real Estate</label>
+                        </div>
+                        
+              
+                        <div class="option">
+                          <input type="radio" class="radio" id="SelfFinancialEnhancement" name="category" />
+                          <label for="SelfFinancialEnhancement">Self Financial Enhancement</label>
+                        </div>
+              
+                        <div class="option">
+                          <input type="radio" class="radio" id="CreativeActivities" name="category" />
+                          <label for="CreativeActivities">Creative Activities</label>
+                        </div>
+                        
+                        <div class="option">
+                          <input type="radio" class="radio" id="SelfFinancialEnhancement" name="category" />
+                          <label for="Creative Activities">Sports</label>
+                        </div>
+    
+                        <div class="option">
+                          <input type="radio" class="radio" id="Other" name="category" />
+                          <label for="Other">Other</label>
+                        </div>
+                      </div>
+              
+                      <div class="selected">
+                        Select Video Category
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class='sub-text'>This information will be put on-chain and CANNOT be changed</span>
+              </div>
+
+
+
+
+
+              <!-- <div class="form-group file-upload">
+                <button id="clearFilee" class="btn btn-light close" aria-label="Close"><span id="closeIcon11"
+                    aria-hidden="true">&times;</span></button>
+                <label id="imageFileLabell">PNG, JPEG, GIF, WEBP, MP4 or MP3. (64 MB max) <br> <span class="label-info">If
+                    file larger than 64 MB<br>add a link to download a high-res version below under <span
+                      class="saleProfit1" id="unlockableContentTooltip" data-toggle="tooltip" data-placement="top"
+                      title="This is content that only the owner of the artwork can see and transfers with ownership on OpenMint.">unlockable
+                      content</span>.<span> </label>
+                <img src="" id="nftImgExx" width="200px">
+                <video src="" id="nftVidEx" autoplay controls loop disablePictureInPicture
+                  controlsList="nofullscreen nodownload" width="200px"></video>
+                <audio src="" id="nftAudEx" width="200px" autoplay controls controlsList="nodownload"></audio>
+                <input required id="nftImgFilee" hidden
+                  accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/webm,audio/mp3,audio/webm,audio/mpeg"
+                  type="file" class="form-control-file">
+                <div class="upload-button-divv">
+                  <label id="uploadImagee" class="button-styling" for="nftImgFilee">Choose Filee</label>
+                </div>
+                <span id='nftSizeExceededText' class="text-danger"></span>
+              </div> -->
+
+              <div class="card">
+                <span class="upload-title">Upload Images</span>
+              
+                <div class="drag-area">
+                  <span class="visible">
+                    Drag & drop image here or
+                    <span class="select" role="button">Browse</span>
+                  </span>
+                  <span class="on-drop">Drop images here</span>
+                  <input name="file"  type="file" class="file" multiple />
+                </div>
+          
+                <!-- IMAGE PREVIEW containers -->
+                <div class="containers"></div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="helper">
+                <div class="input-group" id="additionalInfo">
+                  <span class="input-title">Additional Info</span>
+                  <input id="additionalInfoInput" type="text" class="form-control input-styling naming-styling"
+                    placeholder='e.g. "High-res download link granted after purchase"'
+                    aria-label="additional info for nft">
+                </div>
+                <span class='sub-text'>This information will be off-chain and CAN be changed</span>
+              </div>
+
+              <div class="create-button">
+                <button type="submit" class="btn btn-primary button-styling shadow-sm" disabled
+                  id="createButton">Create</button>
+              </div>
+
+              <div class="modal fade" id="createModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitle">Follow prompts to create</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <button type="button" class="btn btn-primary btn-block button-styling shadow-sm"
+                        id="setApprovalBtn">Set Approval To Sell</button>
+                      <button type="button" class="btn btn-primary btn-block button-styling shadow-sm"
+                        id="saveToIPFSBtn">Upload and Mint</button>
+                      <button type="button" class="btn btn-primary btn-block button-styling shadow-sm" id="setOffer">Put
+                        On Sale</button>
+                      <span class="mt-2" id='successfulText'></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- <footer>
+      <div class="footer-content">
+        <div class="social-media-icons">
+          <a class="icon" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="icon" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="icon" href="#"><i class="fab fa-youtube"></i></a>
+          <a class="icon" href="#"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="learn.html">FAQs</a>
+        </div>
+
+        <div class="company-name">
+          <span>Powered by<a href="https://moralis.io/" target="_blank"><img src="./assets/images-icons/Moralis-Logo-Black.png" width="100px"></a></span> <br>
+          <span>USD data from <a href="https://www.coingecko.com/" target="_blank">CoinGecko <img src="./assets/images-icons/coingeckologo.png" width="20px"> </a></span> <br>
+          <span>© OpenMint, Inc. All rights reserved.</span>
+        </div>
+
+      </div>
+    </footer> -->
+</body>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/js.cookie.js"></script>
+<script src="assets/js/erc-721.js"></script>
+<script src="assets/js/abi.js"></script>
+<script src="assets/js/connectWallet.js"></script>
+
+
+</html>

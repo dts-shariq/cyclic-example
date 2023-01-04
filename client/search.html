@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/userCard.css">
+    <link rel="icon" type="image/png" href="assets/images-icons/OpenMintLogo.png">
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
+    <script src="https://kit.fontawesome.com/99c803f139.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <title>iLife NFT-Marketplace</title>
+    <!-- <title>OpenMint - Create, buy, and sell digital artwork backed by blockchain technology</title> -->
+  </head>
+  <body>
+    <my-header></my-header>
+
+    <div class="container col-11">
+      <div class="modals"></div>
+
+      <section class="recently-minted container-fluid">
+      <header class="header" id='resultsFor'>Showing results for:</header>
+
+        <div class="sorting-row">
+          <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link sorting-button active" data-toggle="pill" id="NFTs">NFTs <span class="count-text" id='nftCount'></span></a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link sorting-button" data-toggle="pill" id="artists">Artists <span class="count-text" id='artistCount'></span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="results-wrapper resultsDivs row">
+          <div id='loader' class="spinner-border mt-5 text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </section>
+
+      <div id="ifWalletNotConnectedModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header center-content">
+              <h5 class="modal-title">Connect Wallet To Like/Encourage Artwork</h5>
+            </div>
+            <div class="modal-body center-content">
+              <button type="button" class="btn btn-secondary button-styling mr-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary button-styling" id="connectWalletModalBtn">Connect Wallet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end of page container -->
+
+    <!-- page will load more items on scroll so footer might not be neccessary -->
+    <!-- <footer>
+      <div class="footer-content">
+        <div class="social-media-icons">
+          <a class="icon" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="icon" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="icon" href="#"><i class="fab fa-youtube"></i></a>
+          <a class="icon" href="#"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="learn.html">FAQs</a>
+        </div>
+
+        <div class="company-name">
+          <span>Powered by<a href="https://moralis.io/" target="_blank"><img src="./assets/images-icons/Moralis-Logo-Black.png" width="100px"></a></span> <br>
+          <span>USD data from <a href="https://www.coingecko.com/" target="_blank">CoinGecko <img src="./assets/images-icons/coingeckologo.png" width="20px"> </a></span> <br>
+          <span>© OpenMint, Inc. All rights reserved.</span>
+        </div>
+
+      </div>
+    </footer> -->
+  </body>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/connectWallet.js"></script>
+  <script src="assets/js/abi.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/js.cookie.js"></script>
+</html>

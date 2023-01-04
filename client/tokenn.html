@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="stylesheet" href="assets/css/token.css">
+    <link rel="icon" type="image/png" href="assets/images-icons/OpenMintLogo.png">
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+       <script src="https://unpkg.com/moralis-v1@1.11.0/dist/moralis.js"></script>
+
+    <script src="https://kit.fontawesome.com/99c803f139.js" crossorigin="anonymous"></script>
+    <script src="assets/js/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <title>iLife NFT-Marketplace</title>
+    <!-- <title>OpenMint - Create, buy, and sell digital artwork backed by blockchain technology</title> -->
+  </head>
+  <body>
+    <my-header></my-header>
+
+    <div class="container-fluid">
+
+      <div id="ifWalletNotConnectedModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header center-content">
+              <h5 class="modal-title">Must Connect Wallet To Continue</h5>
+            </div>
+            <div class="modal-body center-content">
+              <button type="button" class="btn btn-secondary button-styling mr-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary button-styling" id="connectWalletModalBtn">Connect Wallet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="additionalInfoModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Additional Info</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="addtionalInfoModalBody">
+               <p id="additionalInfoText"></p>
+               <textarea id="additionalInfoInput" type="text" class="form-control input-styling" aria-label="additional info"></textarea>
+             </div>
+             <div class="modal-footer">
+               <span id="status"></span>
+               <button type="button" class="btn btn-secondary button-styling" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary button-styling" id="editAdditionalInfo">Edit</button>
+               <button type="button" class="btn btn-primary button-styling" id="saveAdditionalInfo">Save</button>
+             </div>
+          </div>
+        </div>
+      </div>
+      <div id="InsuficanFund" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Insufficient Ilife Token Balance </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+         
+             <div class="modal-footer">
+               <span id="status"></span>
+               <button type="button" class="btn btn-secondary button-styling" data-dismiss="modal">Close</button>
+              
+             </div>
+          </div>
+        </div>
+      </div>
+      <div id="unlockableContentModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id='contentUnlockedTitle'>Content Unlocked</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="unlockableContentModalBody">
+              <p id="unlockableContentText"></p>
+            </div>
+            <div class="modal-footer" id='unlockableFooter'>
+               <span id="copyStatus"></span>
+               <button type="button" class="btn btn-secondary button-styling" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modals"></div>
+
+      <div class="cardDiv row">
+        <div id='loader' class="spinner-border mt-5 text-primary" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/js.cookie.js"></script>
+  <script src="assets/js/connectWallet.js"></script>
+  <script src="assets/js/tokenn.js"></script>
+  <script src="assets/js/abi.js"></script>
+</html>

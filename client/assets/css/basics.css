@@ -1,0 +1,26 @@
+html, body{
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Rubik', sans-serif;
+  background: linear-gradient(to right, #009FFD ,#2A2A72);
+  color: -webkit-linear-gradient(260deg, rgb(80 235 92) 0%, rgb(215 255 185) 80%);
+  margin: 0;
+  padding: 60px 0 0 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+bodyz{
+  font-family: 'Rubik', sans-serif;
+  background: linear-gradient(to right, #009FFD ,#2A2A72);
+  color: -webkit-linear-gradient(260deg, rgb(80 235 92) 0%, rgb(215 255 185) 80%);
+  margin: 0;
+  padding: 60px 0 0 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 5000;
+}

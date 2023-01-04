@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/stats.css">
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="icon" type="image/png" href="assets/images-icons/OpenMintLogo.png">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
+    <script src="https://kit.fontawesome.com/99c803f139.js" crossorigin="anonymous"></script>
+    <title>iLife NFT-Marketplace</title>
+    <!-- <title>OpenMint - Create, buy, and sell digital artwork backed by blockchain technology</title> -->
+  </head>
+  <body>
+    <my-header></my-header>
+
+    <div id="ifWalletNotConnectedModal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header center-content">
+            <h5 class="modal-title">Must Connect Wallet To View Stats</h5>
+          </div>
+          <div class="modal-body center-content">
+            <button type="button" class="btn btn-secondary button-styling mr-2" id="goBackBtn">Go Back</button>
+            <button type="button" class="btn btn-primary button-styling" id="connectWalletModalBtn">Connect Wallet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div style="padding: 5%;">
+      <p></p>
+      <p></p>
+      <p></p>
+    <p>It is in Progress...</p>
+    <p>Here all the records of our sell and purchase will be shown</p>
+    <p>For Example</p>
+    <p>How many NFTs we have minted</p>
+    <p>How many NFTs we have bought</p>
+    <p>How many NFTs we have sell</p>
+    <p>What profit we have generate by selling NFTs</p>
+    <p>What profit we have get from the royalties</p>
+    <p>How many royalities we have recieved till now.</p>
+    <p>etc.</p>
+    </div> -->
+    
+ 
+      <!-- Yahan se -->
+      
+      <div class="container">
+
+      <div class="stats">
+        <header>
+          Your Stats
+        </header>
+        <p class="subheader">Keep track of your profit, amount sold, and more.</p>
+
+        <div class="info">
+<!-- THIS IS THE CODE OF STATUS BEFORE THE ETH -->
+          <!-- <div class="group">
+            <span class="label">Profit From Selling</span>
+            <div class="amounts profit spinner-border text-primary spinner-border-sm">
+              <span class="sub-group" id="profitsFromSelling"></span><br>
+              <span class="usd-amount" id="profitsFromSellingUSD"></span>
+            </div>
+          </div>
+
+          <div class="group">
+            <span class="label">Royalties Received</span>
+            <div class="amounts royalty spinner-border text-primary spinner-border-sm">
+              <span class="sub-group " id="royaltiesReceived"></span><br>
+              <span class="usd-amount" id="royaltiesReceivedUSD"></span>
+            </div>
+          </div>
+
+          <div class="group">
+            <span class="label">Tips Received</span>
+            <div class="amounts tips spinner-border text-primary spinner-border-sm">
+              <span class="sub-group" id="tipsReceived"></span> <br>
+              <span class="usd-amount" id="tipsReceivedUSD"></span>
+            </div>
+          </div>
+
+          <div class="group">
+            <span class="label">Total Earned on iLife Marketplace</span>
+            <div class="amounts total spinner-border text-primary spinner-border-sm">
+              <span class="sub-group" id="total"></span><br>
+              <span class="usd-amount" id="totalUSD"></span>
+            </div>
+          </div> -->
+     
+
+          <div class="group">
+            <span class="label">Sell <span class="next-badge spinner-border text-primary spinner-border-sm" id="amountTillNextBadge"></span> more to get this badge:</span>
+            <img class="badge-img spinner-border text-primary spinner-border-sm" id="nextBadge" src="" width="20px">
+          </div>
+
+          <div class="group">
+            <span class="label">Amount Sold</span>
+            <span class="sold spinner-border text-primary spinner-border-sm" id="amountSold"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Amount Bought</span>
+            <span class="bought spinner-border text-primary spinner-border-sm" id="amountBought"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Amount Minted</span>
+            <span class="minted spinner-border text-primary spinner-border-sm" id="amountMinted"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Likes Received
+              <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Total likes received on artwork you have minted."></i>
+            </span>
+            <span class="likes spinner-border text-primary spinner-border-sm" id="likesReceived"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Encouragements
+              <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Encouragements get reset when an artwork is put for sale."></i>
+            </span>
+            <span class="encouragements spinner-border text-primary spinner-border-sm" id="currentEncouragements"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Followers</span>
+            <span class="followers spinner-border text-primary spinner-border-sm" id="amountOfFollowers"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Following</span>
+            <span class="following spinner-border text-primary spinner-border-sm" id="amountFollowing"></span>
+          </div>
+
+          <div class="group">
+            <span class="label">Joined
+              <i class="far fa-calendar-alt" data-toggle="tooltip" data-placement="top" title="DD.MM.YYYY"></i>
+            </span>
+            <span class="date spinner-border text-primary spinner-border-sm" id="dateJoined"></span>
+          </div>
+
+          <footer style="background-color: transparent;">
+         
+          </footer>
+
+        </div>
+      </div> 
+      <!-- Yahan tak -->
+      <!--end of stats-->
+
+    </div>
+
+    <!-- <footer>
+      <div class="footer-content">
+        <div class="social-media-icons">
+          <a class="icon" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="icon" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="icon" href="#"><i class="fab fa-youtube"></i></a>
+          <a class="icon" href="#"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="learn">FAQs</a>
+        </div>
+
+        <div class="company-name">
+          <span>Powered by<a href="https://moralis.io/" target="_blank"><img src="./assets/images-icons/Moralis-Logo-Black.png" width="100px"></a></span> <br>
+          <span>Price data from <a href="https://app.1inch.io/#/56/swap/WBNB/BUSD" target="_blank">1inch <img src="./assets/images-icons/1inch-1inch-logo.png" width="20px"> </a></span> <br>
+          <span>© OpenMint, Inc. All rights reserved.</span>
+        </div>
+
+      </div>
+    </footer> -->
+  </body>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/js.cookie.js"></script>
+  <script src="assets/js/stats.js"></script>
+  <script src="assets/js/connectWallet.js"></script>
+  </html>

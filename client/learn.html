@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/learn.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="icon" type="image/png" href="assets/images-icons/OpenMintLogo.png">
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
+    <script src="https://kit.fontawesome.com/99c803f139.js" crossorigin="anonymous"></script>
+    <title>iLife NFT-Marketplace</title>
+    <!-- <title>OpenMint - Create, buy, and sell digital artwork backed by blockchain technology</title> -->
+  </head>
+  <body>
+    <my-header></my-header>
+
+    <div class="container">
+      <div class="faqs-page">
+        <header>
+          <img src="assets/images-icons/OpenMintLogo.png" width="100" height="100" alt="icon to initiate light mode theme">
+          iLife <span id="mint">NFT-Marketplace</span>
+          <p class="subheader">FAQs</p>
+        </header>
+       
+       
+        <div class="accordion" id="FAQs">
+
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btns btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  What is an NFT?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#FAQs">
+              <div class="card-body">
+                A non-fungible token (NFT) is a unique digital item held on a blockchain where proof of ownership is easily shown.
+                On iLife, NFTs are used to represent digital and physical artwork which can include but is not limited to exclusive access
+                to redeem a physical product or high-res download. For more information about NFTs click <a target="_blank" href="https://medium.com/geekculture/what-are-nfts-the-collectible-crypto-token-explained-ddd8a49e359b#:~:text=A%20non%2Dfungible%20token%20(NFT,versions%20of%20real%2Dworld%20assets.">here.</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  How do I create an NFT on iLife?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#FAQs">
+              <div class="card-body">
+                1) Click/tap <span id='createInQ2'>CREATE</span> in the navigation bar.<br><br>
+                2) Connect your MetaMask wallet if you haven't already done so. (see below if in need of assistance)<br><br>
+                3) Choose single 1-of-1, this is the ERC-721 token standard.<br><br>
+                4) Upload the artwork. (if larger than 64 MB see Unlockable Content below)<br><br>
+                5) Set a price if you want to sell the artwork. (this can always be changed later)<br><br>
+                6) Choose whether you want to have the buyer receive exclusive unlockable content on purchase.<br>
+                   Note: THIS CANNOT BE SET OR CHANGED LATER<br><br>
+                7) Choose your royalty percentage. This is the percentage of the sale price you will receive on every subsequent purchase of your artwork.<br><br>
+                8) Choose a title for your artwork. <br>
+                  Note: THIS CANNOT BE CHANGED LATER<br><br>
+                9) Choose a description for your artwork. (optional)<br>
+                  Note: THIS CANNOT BE CHANGED LATER<br><br>
+                10) Add any additional info regarding the artwork or any unlockable content. (optional)<br>
+                    Note: THIS CAN BE SET OR CHANGED BY THE OWNER<br><br>
+                11) Click the create button.<br><br>
+                12) If going on sale click the 'Set Approval To Sell' button and confirm in MetaMask (this only needs to be done once), then click 'Upload and Mint' and confirm in MetaMask.<br><br>
+                13) If the artwork is going on sale click 'Put On Sale' and then confirm in MetaMask.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Which wallets are able to be used on iLife?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#FAQs">
+              <div class="card-body">
+                At the current time, only <a target='_blank' href='https://metamask.io/'>MetaMask</a> is allowed to interact with iLife. Use of any others is ill-advised until further notice.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  What is unlockable content?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#FAQs">
+              <div class="card-body">
+                Unlockable content is any information you want the owner of the NFT you make to have exclusive access to.
+                This can be anything from a link to a high-res download to a password to a website to unlock a product. Your imagination is the limit.
+                Just keep in mind that this information can only be set when creating the NFT and cannot be changed later.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingSix">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                  Do I have to sell my artwork for someone to own it?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#FAQs">
+              <div class="card-body">
+                No, you can create an artwork, and once created click the '...' button at the top right of the artwork and transfer the token to a specific address of your choice.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingSeven">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                  What is a royalty?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#FAQs">
+              <div class="card-body">
+                A royalty is a certain percentage of the sale price that is automatically held in an escrow contract when a sale is
+                successful and sits securely until withdrawn by the original creator. It is set during the creation process and cannot
+                be changed due to the nature of a blockchain. At iLife we have a minimum of 1% and a maximum of 50% able to be set.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="heading1inch">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse1inch" aria-expanded="false" aria-controls="collapse1inch">
+                  Where is the USD data from?
+                </button>
+              </h2>
+            </div>
+            <div id="collapse1inch" class="collapse" aria-labelledby="heading1inch" data-parent="#FAQs">
+              <div class="card-body">
+                iLife uses the WBNB/BUSD pairing from <a href="https://app.1inch.io/#/56/swap/WBNB/BUSD">1inch <img src="./assets/images-icons/1inch-1inch-logo.png" width="30px"></a> to give a USD approximation.
+                These prices are subject to change.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingEight">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                  I sold an artwork, but my wallet balance has not gone up.
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#FAQs">
+              <div class="card-body">
+                At iLife security is a top priority, which is why we have chosen to minimize any payment interceptions from hackers
+                and do not send payments directly to an artist's wallet. When you have received a payment for a sale, go to your profile (top-right in the navigation bar) and you will see
+                an available balance to withdraw under your bio. Secondary sale payments received (royalties) are also withdrawn the same way.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingNine">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                  Where is my artwork file stored?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#FAQs">
+              <div class="card-body">
+                At iLife your artwork files are securely stored and pinned on <a target="_blank" href="https://docs.ipfs.io/concepts/what-is-ipfs/">IPFS</a> through a gateway provided by Moralis.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTen">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                  What do the check marks mean?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#FAQs">
+              <div class="card-body">
+                They are a ranking badge for how many sales you have made.<br>
+                1-4: <img src="./assets/images-icons/oneSale.png" height="15px" alt=""><br>
+                5-9: <img src="./assets/images-icons/fiveSales.png" height="15px" alt=""><br>
+                10-19: <img src="./assets/images-icons/tenSales.png" height="15px" alt=""><br>
+                20-34: <img src="./assets/images-icons/twentySales.png" height="15px" alt=""><br>
+                35-49: <img src="./assets/images-icons/thirtyfiveSales.png" height="15px" alt=""><br>
+                50-74: <img src="./assets/images-icons/fiftySales.png" height="15px" alt=""><br>
+                75-99: <img src="./assets/images-icons/seventyfiveSales.png" height="15px" alt=""><br>
+                100+: <img src="./assets/images-icons/hundredPlusSales.png" height="15px" alt=""><br>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingEleven">
+              <h2 class="mb-0">
+                <button class="btns btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                  Can I delete my artwork?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#FAQs">
+              <div class="card-body">
+                While we don't offer an option to delete your masterpiece, if you'd really like no one to be able to own
+                your artwork ever again you can transfer it to this address: 0x000000000000000000000000000000000000dead <br>
+                This is an irreversible action, so proceed with caution.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+   
+  
+
+    <!-- <footer>
+      <div class="footer-content">
+        <div class="social-media-icons">
+          <a class="icon" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="icon" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="icon" href="#"><i class="fab fa-youtube"></i></a>
+          <a class="icon" href="#"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="learn.html">FAQs</a>
+        </div>
+
+        <div class="company-name">
+          <span>Powered by<a href="https://moralis.io/" target="_blank"><img src="./assets/images-icons/Moralis-Logo-Black.png" width="100px"></a></span> <br>
+          <span>USD data from <a href="https://www.coingecko.com/" target="_blank">CoinGecko <img src="./assets/images-icons/coingeckologo.png" width="20px"> </a></span> <br>
+          <span>© OpenMint, Inc. All rights reserved.</span>
+        </div>
+
+      </div>
+    </footer> -->
+  </body>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/learn.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/js.cookie.js"></script>
+  <script src="assets/js/connectWallet.js"></script>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "OpenMint",
+  "version": "1.0.0",
+  "description": "OpenMint is a [dapp](https://www.investopedia.com/terms/d/decentralized-applications-dapps.asp) that combines aspects of social media platforms and a marketplace. It allows any (Open) user to create (Mint), buy, sell, and transfer ERC-721 tokens, which represent artworks in the form of an image, audio, or video file. It is important to clarify that ownership of the ERC-721 token proves ownership of the artwork it represents. It's similar to owning a deed to a house in that anyone can still see the house, it could appreciate or depreciate in value, but the one who owns the deed owns the house and can sell if they want.",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ty-Sir/OpenMint.git"
+  },
+  "author": "Ty-Sir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ty-Sir/OpenMint/issues"
+  },
+  "homepage": "https://github.com/Ty-Sir/OpenMint#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.3",
+    "axios": "^0.26.0",
+    "buffer": "^6.0.3",
+    "canvas-confetti": "^1.4.0",
+    "ipfs-http-client": "^59.0.0",
+    "moralis": "^1.3.5",
+    "truffle": "^5.4.32"
+  }
+}
